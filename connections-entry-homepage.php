@@ -111,6 +111,8 @@ if ( ! class_exists( 'Connections_Entry_Homepage' ) ) {
 				// Since we're using a custom field, we need to add our own sanitization method.
 				add_filter( 'cn_meta_sanitize_field-entry_homepage', array( __CLASS__, 'sanitize') );
 
+				add_filter( 'cn_permalink', array( __CLASS__, 'permalink' ), 10, 2 );
+
 				// Set the shortcode `home_id` option to the value saved for the entry or use the default value.
 				//add_filter( 'cn_entry_directory_homepage', array( __CLASS__, 'setShortcodeOptionValue' ), 10, 2 );
 				add_filter( 'cn_list_atts_permitted', array( __CLASS__, 'setShortcodeOptionValue' ), 10 );
@@ -226,6 +228,46 @@ if ( ! class_exists( 'Connections_Entry_Homepage' ) ) {
 		public static function sanitize( $value ) {
 
 			return absint( $value );
+		}
+
+		/**
+		 * Callback for the `cn_permalink` filter.
+		 *
+		 * @todo This should hook into the cn_entry_permalink filter instead but core need updated to use the cnEntry::permalink() helper function first.
+		 * @todo Add option to select an internal or eternal page. When internal page display a page list drop down.
+		 * @todo Add option to choose whether the link should be open in same window or new.
+		 * @todo These options will require a couple filters be add to core. One in each of cnEntry::getPermalink(), cnOutput::getNameBlock() and cnOutput::permalink().
+		 *
+		 * @param string $permalink
+		 * @param array  $atts
+		 *
+		 * @return string
+		 */
+		public static function permalink( $permalink, $atts ) {
+
+			if ( ! isset( $atts['type'] ) || 'name' !== $atts['type'] ) {
+
+				return $permalink;
+			}
+
+			$entry = Connections_Directory()->retrieve->entry( $atts['slug'] );
+
+			if ( FALSE != $entry ) {
+
+				$meta = cnMeta::get( 'entry', $entry->id, 'entry_homepage', TRUE );
+
+				if ( ! empty( $meta ) ) {
+
+					$maybePermalink = get_permalink( $meta );
+
+					if ( is_string( $maybePermalink ) ) {
+
+						$permalink = $maybePermalink;
+					}
+				}
+			}
+
+			return $permalink;
 		}
 
 		/**
