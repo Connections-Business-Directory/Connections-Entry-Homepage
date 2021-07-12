@@ -6,18 +6,18 @@
  * @category  Extension
  * @author    Steven A. Zahm
  * @license   GPL-2.0+
- * @link      http://connections-pro.com
+ * @link      https://connections-pro.com
  * @copyright 2021 Steven A. Zahm
  *
  * @wordpress-plugin
  * Plugin Name:       Connections Business Directory Extension - Entry Homepage
- * Plugin URI:        http://connections-pro.com
+ * Plugin URI:        https://connections-pro.com
  * Description:       An extension for the Connections Business Directory which add a field which can be used to define the directory homepage of an entry.
  * Version:           1.0
  * Author:            Steven A. Zahm
- * Author URI:        http://connections-pro.com
+ * Author URI:        https://connections-pro.com
  * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       connections-entry-homepage
  * Domain Path:       /languages
  */
