@@ -2,7 +2,7 @@
 /**
  * An extension for the Connections Business Directory which add a field which can be used to define the directory homepage of an entry.
  *
- * @package   Connections Business Directory Entry Homepage
+ * @package   Connections Business Directory Extension - Entry Homepage
  * @category  Extension
  * @author    Steven A. Zahm
  * @license   GPL-2.0+
@@ -10,7 +10,7 @@
  * @copyright 2021 Steven A. Zahm
  *
  * @wordpress-plugin
- * Plugin Name:       Connections Business Directory Entry Homepage
+ * Plugin Name:       Connections Business Directory Extension - Entry Homepage
  * Plugin URI:        http://connections-pro.com
  * Description:       An extension for the Connections Business Directory which add a field which can be used to define the directory homepage of an entry.
  * Version:           1.0
